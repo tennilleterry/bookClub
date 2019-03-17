@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation2"></nav>
+
+<p th:unless="${comments} and ${comments.size()}">Comment on book</p>
+
+
+<a href="/comment/add" class="btn btn-info" role="button">Chapter 1</a>
+
+<table class="table">
+
+    <tr>
+        <th>Comments</th>
+
+
+    </tr>
+
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.name}"></td>
+
+
+    </tr>
+
+</table>
+<a href="/comment/add" class="btn btn-info" role="button">Add Comment</a>
+
+
+
+
+</body>
+</html>

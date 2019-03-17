@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1>Welcome to Book Club</h1>
+<h2>This month's book is: The Girl on the Train</h2>
+<h2>Next Book: Lion Heart</h2>
+
+
+<table class="table">
+
+    <tr>
+        <th>Comments</th>
+        <th>Users</th>
+
+
+    </tr>
+
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.name}"></td>
+        <td th:text="${comment.user.username}"></td>
+
+
+
+    </tr>
+
+</table>
+
+
+
+
+
+
+<p><a href="/user/login">Get started!!!!</a></p>
+
+</body>
+</html>
