@@ -35,6 +35,10 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Book1> book1;
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Book2> book2;
+
 
     @OneToMany
     @JoinColumn(name = "user_id")
@@ -96,5 +100,6 @@ public class User {
     public List<Book1> getBook1() {
         return book1;}
 
-
+    public List<Book2> getBook2() {
+        return book2;}
 }

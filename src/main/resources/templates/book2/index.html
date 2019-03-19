@@ -7,12 +7,34 @@
 
 <nav th:replace="fragments :: navigation2"></nav>
 
-<h1 th:text="${book2.name}"></h1>
-<h2 th:text="'by ' + ${book2.author}"></h2>
-<h3 th:text="${book2.description}"></h3>
-<img src="https://books.google.com/books/content?id=NQvZtAEACAAJ&printsec=
+<a href="/book2/add" class="btn btn-info" role="button">Add Comment</a>
+
+<h1>The Silent Patient</h1>
+
+<h2> by Michaelides</h2><img src="https://books.google.com/books/content?id=NQvZtAEACAAJ&printsec=
 frontcover&img=1&zoom=1&imgtk=AFLRE70412ho8xxKfqotDs-VuBFRQxMQEBYvArLFSCrh-IZO7rXQriWtTu14lyn15FM40f3YKsfQmOv_xIUs
 7gXcXfZLRT6dCHCICfbPx0UEZ4nRpEDiSILDzjHXnZgk-GrM-Zj-Eb0D">
+
+<h2>
+Late one evening, Alicia shoots Gabriel five times and then never speaks another
+word. The Silent Patient is a heart-stopping debut thriller about a woman's brutal and
+    random act of violence against her husband - and the man obsessed with discovering why.</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Comments</th>
+
+
+    </tr>
+
+    <tr th:each="theBook : ${book2}">
+        <td th:text="${theBook.comment}"></td>
+
+
+    </tr>
+
+</table>
 
 </body>
 </html>

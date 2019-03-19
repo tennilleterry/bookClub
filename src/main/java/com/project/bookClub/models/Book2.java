@@ -16,19 +16,19 @@ public class Book2 {
     @GeneratedValue
     private int id;
 
+
+    @NotNull
     @Size(min = 1, max = 250)
-    private String name = "The Silent Patient";
-
-    @Size(min = 1, max = 250)
-    private String author = "Alex Michaelides";
-
-    @Size(min = 1, max = 1000)
-    private String description = "Late one evening, Alicia shoots Gabriel five times and then never speaks another " +
-            "word. The Silent Patient is a heart-stopping debut thriller about a woman's brutal and " +
-            "random act of violence against her husband - and the man obsessed with discovering why.";
+    private String comment;
 
 
-    public Book2() {
+    @ManyToOne
+    private User user;
+
+    public Book2() { }
+
+    public Book2(String comment){
+        this.comment = comment;
     }
 
     public int getId() {
@@ -36,20 +36,23 @@ public class Book2 {
         return id;
     }
 
-    public String getName() {
+    public String getComment() {
 
-        return name;
+        return comment;
+    }
+
+    public void setComment(String comment){
+        this.comment = comment;
     }
 
 
-    public String getAuthor() {
+    public User getUser() {
 
-        return author;
+        return user;
     }
 
+    public void setUser(User u) {
 
-    public String getDescription() {
-
-        return description;
+        this.user = u;
     }
 }

@@ -28,41 +28,38 @@ public class Book1Controller {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private CommentDao commentDao;
 
 
     @RequestMapping(value = "")
-    public String index(Model model) {
+    public String index(Model model, @CookieValue(value = "user", defaultValue = "none") String username) {
 
+        if(username.equals("none")) {
+            return "redirect:/user/login";
+        }
 
-        Book1 book1 = new Book1();
-
-       // book1Dao.save(book1);
-        model.addAttribute("book1", book1);
-        model.addAttribute("comments", book1.getComments());
-
+        User u = userDao.findByUsername(username).get(0);
+        model.addAttribute("book1", u.getBook1());
         model.addAttribute("title", "Book #1");
 
         return "book1/index";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddBookForm(Model model, @CookieValue(value = "user", defaultValue = "none") String username) {
+    public String displayAddCommentForm(Model model, @CookieValue(value = "user", defaultValue = "none") String username) {
         if(username.equals("none")) {
             return "redirect:/user/login";
         }
         User u = userDao.findByUsername(username).get(0);
-        model.addAttribute("title", "Add Comment");
-        model.addAttribute(new Comment());
+        model.addAttribute("title", "Book #1 Comments");
+        model.addAttribute(new Book1());
 
 
-        return "comment/add";
+        return "book1/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddBookForm(
-            @ModelAttribute @Valid Comment newComment,
+    public String processAddCommentForm(
+            @ModelAttribute @Valid Book1 newBook1,
             Errors errors,
             Model model , @CookieValue(value = "user", defaultValue = "none") String username) {
         if(username.equals("none")) {
@@ -70,13 +67,13 @@ public class Book1Controller {
         }
         User u = userDao.findByUsername(username).get(0);
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Comment");
-            return "comment/add";
+            model.addAttribute("title", "Book #1 Comments");
+            return "book1/add";
         }
 
 
-        newComment.setUser(u);
-        commentDao.save(newComment);
+        newBook1.setUser(u);
+        book1Dao.save(newBook1);
         return "redirect:";
     }
 

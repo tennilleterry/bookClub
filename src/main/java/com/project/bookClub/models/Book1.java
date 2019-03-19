@@ -13,53 +13,38 @@ public class Book1 {
     @GeneratedValue
     private int id;
 
+    @NotNull
     @Size(min = 1, max = 250)
-    private String name = "The Girl on The Train";
+    private String comment;
 
-    @Size(min = 1, max = 250)
-    private String author = "Paula Hawkins";
-
-    @Size(min = 1, max = 1000)
-    private String description = "Rachel takes the same commuter train every morning and night and stops at the signal " +
-            "where she watches the same couple. Their life—as she sees it—is perfect. Not unlike the life she " +
-            "recently lost.";
-
-    @OneToMany
-    @JoinColumn(name = "book1_id")
-    private List<Comment> comments;
 
     @ManyToOne
     private User user;
 
     public Book1() { }
 
+    public Book1(String comment) {
+        this.comment = comment;
+
+    }
+
     public int getId() {
 
         return id;
     }
 
-    public String getName() {
+    public String getComment() {
 
-        return name;
+        return comment;
+
+    }
+    public void setComment(String comment){
+        this.comment = comment;
     }
 
 
 
-    public String getAuthor() {
 
-        return author;
-    }
-
-
-    public String getDescription() {
-
-        return description;
-    }
-
-
-
-    public List<Comment> getComments() {
-        return comments;}
 
 
     public User getUser() {
