@@ -31,6 +31,10 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Book> books;
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Book1> book1;
+
 
     @OneToMany
     @JoinColumn(name = "user_id")
@@ -83,10 +87,14 @@ public class User {
     }
 
     public List<Book> getBooks() {
+
         return books;}
 
     public List<Comment> getComments() {
         return comments;}
+
+    public List<Book1> getBook1() {
+        return book1;}
 
 
 }

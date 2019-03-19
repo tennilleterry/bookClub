@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation2"></nav>
 
-<p th:unless="${comments} and ${comments.size()}">Comment on book</p>
+<a href="/comment/add" class="btn btn-info" role="button">Add Comment</a>
 
-
-<a href="/book1/" class="btn btn-info" role="button">Book #1</a>
 
 <table class="table">
 
@@ -22,13 +19,19 @@
     </tr>
 
     <tr th:each="comment : ${comments}">
-        <td th:text="${comment.name}"></td>
+        <td th:text="${book1.comment.name}"></td>
 
 
     </tr>
 
 </table>
-<a href="/comment/add" class="btn btn-info" role="button">Add Comment</a>
+
+<h1 th:text="${book1.name}"></h1>
+<h2 th:text="'by ' + ${book1.author}"></h2>
+<h3 th:text="${book1.description}"></h3>
+<img src="https://images.gr-assets.com/books/1490903702l/22557272.jpg">
+
+
 
 
 

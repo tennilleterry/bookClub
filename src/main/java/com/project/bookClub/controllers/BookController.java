@@ -34,7 +34,7 @@ public class BookController {
 
         User u = userDao.findByUsername(username).get(0);
         model.addAttribute("books", u.getBooks());
-        model.addAttribute("title", "My Books");
+        model.addAttribute("title", "To Read List");
 
         return "book/index";
     }

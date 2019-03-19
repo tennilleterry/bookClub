@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation2"></nav>
+
+<h1 th:text="${book2.name}"></h1>
+<h2 th:text="'by ' + ${book2.author}"></h2>
+<h3 th:text="${book2.description}"></h3>
+<img src="https://books.google.com/books/content?id=NQvZtAEACAAJ&printsec=
+frontcover&img=1&zoom=1&imgtk=AFLRE70412ho8xxKfqotDs-VuBFRQxMQEBYvArLFSCrh-IZO7rXQriWtTu14lyn15FM40f3YKsfQmOv_xIUs
+7gXcXfZLRT6dCHCICfbPx0UEZ4nRpEDiSILDzjHXnZgk-GrM-Zj-Eb0D">
+
+</body>
+</html>
